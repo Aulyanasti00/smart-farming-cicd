@@ -1,0 +1,26 @@
+name: Smart Farming CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Give Permission
+      run: chmod +x smart_farming.sh test_farming.sh
+
+    - name: Run Smart Farming Monitoring
+      run: ./smart_farming.sh
+
+    - name: Run Testing
+      run: ./test_farming.sh
+
+    - name: Deployment Simulation
+      run: echo "Smart Farming Deployment Success"
